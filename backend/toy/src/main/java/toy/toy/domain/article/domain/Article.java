@@ -7,16 +7,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.CreatedDate;
+import toy.toy.domain.article.dto.CreateArticleRequest;
 
 @Entity
 @Table(name = "article")
 @Getter
+@Builder
 @AllArgsConstructor
 public class Article {
 
@@ -30,6 +30,10 @@ public class Article {
     @NotNull
     private String content;
 
-    @CreatedDate
     private Date create_date;
+
+    public static Article createArticle(CreateArticleRequest request) {
+        return Article.builder().title(request.getTitle()).content(request.getContent())
+            .create_date(new Date()).build();
+    }
 }
