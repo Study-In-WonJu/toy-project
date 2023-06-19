@@ -1,7 +1,9 @@
 package toy.toy.domain.article.api;
 
 import java.net.URI;
+import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,7 +20,7 @@ public class CreateArticleController {
     private final CreateArticleService createArticleService;
 
     @PostMapping
-    public ResponseEntity<Void> create(@RequestBody CreateArticleRequest request) {
+    public ResponseEntity<Void> create(@RequestBody @Valid CreateArticleRequest request) {
         Long articleId = createArticleService.create(request);
         return ResponseEntity.created(URI.create("/article/" + articleId)).build();
     }
