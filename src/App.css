@@ -1,0 +1,13 @@
+/* App.css
+    App의 css설정.
+    div 사이의 padding과 게시판 이동 버튼 배경색 설정.
+*/
+
+div{
+    text-align: center;
+    padding: 2%;
+}
+
+button{
+    background-color: white;
+}
