@@ -11,6 +11,7 @@ import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import toy.toy.domain.article.dto.CreateArticleRequest;
 
 @Entity
@@ -30,10 +31,13 @@ public class Article {
     @NotNull
     private String content;
 
-    private Date create_date;
+    private Date createDate;
 
     public static Article createArticle(CreateArticleRequest request) {
         return Article.builder().title(request.getTitle()).content(request.getContent())
-            .create_date(new Date()).build();
+            .createDate(new Date()).build();
+    }
+
+    public Article() {
     }
 }
