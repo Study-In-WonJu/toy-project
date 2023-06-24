@@ -40,4 +40,8 @@ public class Article {
 
     public Article() {
     }
+
+    public void updateContent(String content){
+        this.content = content;
+    }
 }
