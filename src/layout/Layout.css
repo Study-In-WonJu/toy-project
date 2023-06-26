@@ -1,0 +1,8 @@
+/* HeaderAndFooter.css
+    Header와 Footer의 위치와 글씨 크기 조정. 
+*/
+
+div{
+    text-align: center;
+    font-size: large;
+}

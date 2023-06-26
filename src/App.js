@@ -1,38 +1,24 @@
 import React from 'react';
-import './App.css';
-import { Routes, Route, Link } from 'react-router-dom';
-import MainBoard from './Board/MainBoard';
+import { Routes, Route } from 'react-router-dom';
+import Home from './Home'
+import MainBoard from './board/MainBoard';
+import WriteArticle from './article/WriteArticle';
+import ReadArticle from './article/ReadArticle';
 
 /* App.js
-    게시판의 홈 화면.
-    이 페이지를 통해 게시판으로 이동할 수 있음. 
+    Link를 위한 Route들을 모아둠.
+    Home, MainBoard, WriteArticle, ReadArticle 연결.
 */
 
-/* App()
-    헤더, 게시판 이동 버튼, 푸터로 구성.
-    각각 hr로 분할.
-    게시판 이동 버튼을 통해 게시판(MainBoard)으로 이동.
- */
 function App() {
   return (
     <>
-      <div>
-        <header> Header </header>
-        <hr/>
-      </div>
-
       <Routes>
-        <Route path="./Board/MainBoard" element={<MainBoard/>}/>
+        <Route path="./Home" element={<Home/>}/>
+        <Route path="./board/MainBoard" element={<MainBoard/>}/>
+        <Route path="./article/WriteArticle" element={<WriteArticle/>}/>
+        <Route path="./article/ReadArticle" element={<ReadArticle/>}/>
       </Routes>
-
-      <Link to = "./Board/MainBoard"> 
-        <button> 게시판 이동 </button>
-      </Link>
-
-      <div>
-        <hr/>
-        <footer> Footer </footer>
-      </div>
     </>
   )
 }

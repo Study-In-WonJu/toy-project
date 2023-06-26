@@ -1,18 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App'
+import App from './App';
+import Home from './Home'
 import { BrowserRouter } from 'react-router-dom';
 
-
 /* index.js
-   App과 연동시킴.
-   첫 화면에 바로 App.js로 이동.
+   App과 Home을 렌더링.
+   App에는 Route들이 있고, Home에는 첫 화면이 나옴.
 */
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <>
     <BrowserRouter>
       <App/>
+      <Home/>
     </BrowserRouter>
   </>
 );
