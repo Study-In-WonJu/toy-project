@@ -1,6 +1,4 @@
 import React from "react";
-import Header from "../layout/Header"
-import Footer from "../layout/Footer"
 import '../board/BoardForm.css'
 
 /* ReadArticle.jsx
@@ -14,8 +12,6 @@ import '../board/BoardForm.css'
 function ReadArticle(){
     return(
         <>
-            <Header now="read"/>
-
             <div>
                 <h2> Title </h2>
             </div>
@@ -29,8 +25,6 @@ function ReadArticle(){
                 <td class="comment"> commentcontent </td>
                 <td class="lastDate"> lastDate </td>
             </table>
-
-            <Footer/>
         </>
     )
 }

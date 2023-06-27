@@ -1,5 +1,4 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
 import './Layout.css'
 
 /* Footer.jsx
@@ -10,12 +9,8 @@ import './Layout.css'
 const Footer = () => {
     return(
         <>
-            <div>
-                <hr/>
-                <Link to="Home">
-                    <footer> back </footer>
-                </Link>
-            </div>
+            <hr/>
+            <div> Footer </div>
         </>
     )
 }

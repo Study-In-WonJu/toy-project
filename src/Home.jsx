@@ -1,8 +1,9 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
 import './Home.css';
 import Header from './layout/Header';
 import Footer from './layout/Footer';
+import BoardForm from './board/BoardForm';
+import WriteArticle from './article/WriteArticle';
 
 /* Home.jsx
     보여지는 첫 화면.
@@ -11,15 +12,30 @@ import Footer from './layout/Footer';
 */
 
 function Home() {
+  const [mode, setMode] = useState('Home');
+  let content = null;
+
+  if(mode === 'Home'){
+    content = <button onClick={() => setMode('Board')}> 게시판 </button>
+  }
+  else if(mode === 'Board'){
+    content = 
+      <>
+        <BoardForm type='articleList'/>
+        <button onClick={() => setMode('Write')}> 작성 </button>
+      </>
+  }
+  else if(mode === 'Write'){
+    content = <WriteArticle/>
+  }
+
   return (
     <>
-      <Header now="Home"/>
+      <Header now={mode}/>
 
-      <Link to = "./Board/MainBoard"> 
-        <button> 게시판 이동 </button>
-      </Link>
-
-      <Footer/>
+      {content}
+      
+      <Footer now={mode}/>
     </>
   )
 }
