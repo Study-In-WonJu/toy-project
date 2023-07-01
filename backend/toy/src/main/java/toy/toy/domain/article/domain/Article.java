@@ -1,18 +1,22 @@
 package toy.toy.domain.article.domain;
 
 import com.sun.istack.NotNull;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import toy.toy.domain.article.dto.CreateArticleRequest;
+import toy.toy.domain.comment.domain.Comment;
 
 @Entity
 @Table(name = "article")
@@ -32,6 +36,9 @@ public class Article {
     private String content;
 
     private Date createDate;
+
+    @OneToMany(mappedBy = "article", orphanRemoval = true)
+    private List<Comment> comments = new ArrayList<>();
 
     public static Article createArticle(CreateArticleRequest request) {
         return Article.builder().title(request.getTitle()).content(request.getContent())
