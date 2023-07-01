@@ -1,0 +1,12 @@
+/* Home.css
+    Home의 css.
+    여백과 버튼을 꾸밈.
+*/
+
+body{
+    padding: 2%;
+}
+
+button{
+    background-color: white;
+}

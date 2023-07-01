@@ -8,9 +8,17 @@ import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
+import toy.toy.global.error.exception.NotExistsException;
 
 @RestControllerAdvice
 public class ExceptionAdvice {
+
+    @ExceptionHandler(NotExistsException.class)
+    public ResponseEntity<ErrorResponse> handleNotExistsException(NotExistsException e) {
+
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+            .body(new ErrorResponse(e.getMessage()));
+    }
 
     //아래 4가지는 기본적으로 설정된 에러
     //Post시 body가 비어있거나 형식이 알맞지 않을 때
