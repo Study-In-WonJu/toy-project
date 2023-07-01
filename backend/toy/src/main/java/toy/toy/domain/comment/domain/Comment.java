@@ -14,6 +14,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import toy.toy.domain.article.domain.Article;
+import toy.toy.domain.comment.dto.CreateCommentRequest;
 
 @Entity
 @Table(name = "comment")
@@ -36,5 +37,13 @@ public class Comment {
     private Article article;
 
     public Comment() {
+    }
+
+    public static Comment createComment(CreateCommentRequest request, Article article){
+        return Comment.builder()
+            .content(request.getContent())
+            .createDate(new Date())
+            .article(article)
+            .build();
     }
 }
