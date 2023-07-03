@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import './Home.css';
 import Header from './layout/Header';
 import Footer from './layout/Footer';
-import BoardForm from './board/BoardForm';
-import WriteArticle from './article/WriteArticle';
+import BoardForm from './board/BoardList';
+import WriteArticle from './board/WriteArticle';
 
 /* Home.jsx
     보여지는 첫 화면.
@@ -21,12 +21,16 @@ function Home() {
   else if(mode === 'Board'){
     content = 
       <>
-        <BoardForm type='articleList'/>
+        <BoardForm/>
         <button onClick={() => setMode('Write')}> 작성 </button>
       </>
   }
   else if(mode === 'Write'){
-    content = <WriteArticle/>
+    content = 
+    <>
+      <BoardForm/>
+      <WriteArticle/>
+    </>
   }
 
   return (
