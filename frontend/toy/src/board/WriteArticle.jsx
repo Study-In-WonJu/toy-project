@@ -8,7 +8,11 @@ const serverUrl = "http://localhost:8080/article"
     헤더, 제목, 내용 작성칸, 게시 버튼, 푸터로 구성.
 */
 
-
+const config =  {
+   headers: {
+    "Content-Type": "application/json"
+   } 
+};
 function WriteArticle(){
     const [article, setArticle] = useState({
         title: '',
@@ -25,9 +29,8 @@ function WriteArticle(){
     }
 
     const saveArticle = ()  => {
-        axios.post(serverUrl, {
-            body: JSON.stringify(article)
-        }).then(res =>{
+        axios.post(serverUrl, JSON.stringify(article), config
+        ).then(res =>{
             if(res.status === 201){
                 alert("status 201")
             }
