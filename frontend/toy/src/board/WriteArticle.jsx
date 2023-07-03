@@ -24,7 +24,7 @@ function WriteArticle(){
         })
     }
 
-    useEffect = ()  => {
+    const saveArticle = ()  => {
         axios.post(serverUrl, {
             body: JSON.stringify(article)
         }).then(res =>{
@@ -32,22 +32,25 @@ function WriteArticle(){
                 alert("status 201")
             }
             else{
-                alert("status not 201")
+                alert(res.message)
             }
         }).catch((err) => {
-            console.log(err.res.data)
+            console.log(err)
         })
     }
 
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        saveArticle()
+    }
 
     return(
         <>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <p><input type="text" name="title" value={title} onChange={onChange}/></p>
                 <p><textarea name="content" value={content} onChange={onChange}/></p>
+                <input type="submit" value="게시"/>
             </form>
-
-            <input type="submit" value="게시"/>
         </>
     )
 }

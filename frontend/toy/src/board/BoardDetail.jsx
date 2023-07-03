@@ -1,6 +1,6 @@
 import React from "react";
 
-const BoardArticle = (props) => {
+const BoardDetail = (props) => {
     return(
         <>
             <span>{props.id}</span>
@@ -11,4 +11,4 @@ const BoardArticle = (props) => {
         </>
     )
 }
-export default BoardArticle;
+export default BoardDetail;
