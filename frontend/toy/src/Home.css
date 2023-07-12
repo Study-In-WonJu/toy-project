@@ -10,3 +10,13 @@ body{
 button{
     background-color: white;
 }
+
+li{
+    margin-bottom: 5px;
+    border-bottom: 1px solid gray;
+    list-style: none;
+}
+
+ul{
+    border: 1px gray;
+}
