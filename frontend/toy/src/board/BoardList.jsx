@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import BoardDetail from "./BoardDetail";
+import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 
 const serverUrl = "http://localhost:8080/article"
 /* BoardForm.js
@@ -12,24 +14,41 @@ const serverUrl = "http://localhost:8080/article"
 function BoardList(){
     const [boardList, setBoardList] = useState([])
 
-    const getBoardList = async () => {
-        const res = await (await axios.get(serverUrl)).data
-        setBoardList(res.data)
-        console.log(res.data)
+    const getBoardList = async()  => {
+        axios.get(serverUrl
+        ).then(res =>{
+            if(res.status === 200){
+                setBoardList(res.data)
+            }
+            else{
+                alert(res.message)
+            }
+        }).catch((err) => {
+            alert(err.message)
+        })
     }
 
     useEffect(() => {
         getBoardList()
     }, [])
 
+    // const GoArticle = (articleId) => {
+    //     let nav = useNavigate()
+    //     nav(serverUrl + articleId, {})
+    // }
+
     return(
         <>
             <p> 게시판 목록 </p>
-            {/* <ul>
-                <li key={board.idx}>
-                    <Link to={`/board/${board.idx}`}>{board.title}</Link>
-                </li>
-            </ul> */}
+            <div>
+                <ul>
+                    {boardList && boardList.map((board) => (
+                        <li key={board.articleId}>
+                            {board.title}
+                        </li>
+                    ))}
+                </ul>
+            </div>
         </>
     )
 }
