@@ -8,6 +8,7 @@ import toy.toy.domain.article.dao.ArticleRepository;
 import toy.toy.domain.article.domain.Article;
 import toy.toy.domain.article.dto.ArticleDetailsResponse;
 import toy.toy.domain.article.dto.ArticleResponse;
+import toy.toy.domain.comment.domain.Comment;
 import toy.toy.global.error.exception.NotExistsException;
 
 @Service
@@ -26,7 +27,7 @@ public class FindArticleService {
     public ArticleDetailsResponse findDetails(Long articleId) {
         Article article = articleRepository.findById(articleId)
             .orElseThrow(() -> new NotExistsException("해당하는 게시글이 존재하지 않습니다."));
-        return ArticleDetailsResponse.toResponse(article);
-
+        List<Comment> comments = article.getComments();
+        return ArticleDetailsResponse.toResponse(article, comments);
     }
 }
