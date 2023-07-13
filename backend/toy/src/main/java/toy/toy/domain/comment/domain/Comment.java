@@ -46,4 +46,8 @@ public class Comment {
             .article(article)
             .build();
     }
+
+    public void updateContent(String content){
+        this.content = content;
+    }
 }
