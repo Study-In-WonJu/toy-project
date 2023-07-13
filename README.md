@@ -2,6 +2,10 @@
 toy-project
 
 
+## ERD
+![image](https://github.com/Study-In-WonJu/toy-project/assets/45135492/895e32f7-32ba-48e3-8483-1c3cddbcbd84)
+
+
 ## API 문서
 https://documenter.getpostman.com/view/14960809/2s93sjUUbY#c7704ccb-3884-49ff-be47-62e1d6e8f37a
 
@@ -27,7 +31,7 @@ articleID ForeignKey
 4. 게시글 삭제
 5. 게시글 수정 
 6. 댓글 작성
-7, 게시글 하나 찾기  + 데이터 추가
+7. 게시글 하나 찾기 + 데이터 추가
 8. 댓글 삭제
 9. 댓글 수정
 
