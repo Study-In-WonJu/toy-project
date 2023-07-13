@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="49ffaa66-fd39-4713-8bb5-5d7e625aa55c" name="Changes" comment="feat: CreateComment api 구현">
-      <change afterPath="$PROJECT_DIR$/toy/src/main/java/toy/toy/domain/article/dto/CommentResponse.java" afterDir="false" />
+    <list default="true" id="49ffaa66-fd39-4713-8bb5-5d7e625aa55c" name="Changes" comment="refactor: 게시글 찾기 댓글 내용 추가, fetch join 으로 1번의 select">
+      <change afterPath="$PROJECT_DIR$/toy/src/main/java/toy/toy/domain/comment/api/ChangeCommentController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/toy/src/main/java/toy/toy/domain/comment/application/ChangeCommentService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/toy/src/main/java/toy/toy/domain/comment/dao/CommentMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/toy/src/main/java/toy/toy/domain/article/application/FindArticleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/toy/src/main/java/toy/toy/domain/article/application/FindArticleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/toy/src/main/java/toy/toy/domain/article/dao/ArticleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/toy/src/main/java/toy/toy/domain/article/dao/ArticleRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/toy/src/main/java/toy/toy/domain/article/dto/ArticleDetailsResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/toy/src/main/java/toy/toy/domain/article/dto/ArticleDetailsResponse.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +64,10 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "backend-feat#7",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/khdsc/IdeaProjects/wonjuToyProject/backend/toy/src/main/java/toy/toy/global/error"
+    "last_opened_file_path": "C:/Users/khdsc/IdeaProjects/wonjuToyProject/backend/toy/src/main/java/toy/toy/global/error",
+    "project.structure.last.edited": "Problems",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -320,7 +322,21 @@
       <option name="project" value="LOCAL" />
       <updated>1688211598840</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="refactor: 게시글 찾기 dto 댓글 내용 추가">
+      <created>1689251239703</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1689251239703</updated>
+    </task>
+    <task id="LOCAL-00028" summary="refactor: 게시글 찾기 댓글 내용 추가, fetch join 으로 1번의 select">
+      <created>1689251274939</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1689251274939</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -347,6 +363,8 @@
     <MESSAGE value="feat: comment 객체 및 마이그래이션 설정 추가" />
     <MESSAGE value="feat: comment Repository 구현" />
     <MESSAGE value="feat: CreateComment api 구현" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: CreateComment api 구현" />
+    <MESSAGE value="refactor: 게시글 찾기 dto 댓글 내용 추가" />
+    <MESSAGE value="refactor: 게시글 찾기 댓글 내용 추가, fetch join 으로 1번의 select" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: 게시글 찾기 댓글 내용 추가, fetch join 으로 1번의 select" />
   </component>
 </project>
