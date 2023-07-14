@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import Home from './Home'
 import { BrowserRouter } from 'react-router-dom';
 
 /* index.js
@@ -13,7 +12,6 @@ root.render(
   <>
     <BrowserRouter>
       <App/>
-      <Home/>
     </BrowserRouter>
   </>
 );
