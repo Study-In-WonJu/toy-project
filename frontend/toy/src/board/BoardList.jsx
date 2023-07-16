@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import BoardDetail from "./BoardDetail";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 
@@ -32,11 +31,6 @@ function BoardList(){
         getBoardList()
     }, [])
 
-    // const GoArticle = (articleId) => {
-    //     let nav = useNavigate()
-    //     nav(serverUrl + articleId, {})
-    // }
-
     return(
         <>
             <p> 게시판 목록 </p>
@@ -44,7 +38,9 @@ function BoardList(){
                 <ul>
                     {boardList && boardList.map((board) => (
                         <li key={board.articleId}>
-                            {board.title}
+                            <Link to = {'/article/' + board.articleId}>
+                                {board.title}
+                            </Link>
                         </li>
                     ))}
                 </ul>
