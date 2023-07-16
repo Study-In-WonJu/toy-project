@@ -38,7 +38,7 @@ function BoardList(){
                 <ul>
                     {boardList && boardList.map((board) => (
                         <li key={board.articleId}>
-                            <Link to = {'article/${board.articleId}'}>
+                            <Link to = {'/article/' + board.articleId}>
                                 {board.title}
                             </Link>
                         </li>

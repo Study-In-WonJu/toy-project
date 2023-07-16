@@ -7,6 +7,7 @@ const BoardDetail = () => {
     const board = useParams()
     const [article, setArticle] = useState([])
     const serverUrl = "http://localhost:8080/article/" + board.articleId
+    const nav = useNavigate()
 
     const getArticle = async()  => {
         axios.get(serverUrl
@@ -26,6 +27,25 @@ const BoardDetail = () => {
         getArticle()
     }, [])
 
+    const backToList = () => {
+        nav('/')
+    }
+
+    const deleteArticle = async() => {
+        axios.delete(serverUrl
+        ).then((res) => {
+            if(res.status == 204){
+                alert("삭제되었습니다")
+                nav('/')
+            }
+            else{
+                alert(res.message)
+            }
+        }).catch((err) => {
+            alert(err.message)
+        })
+    }
+
     return(
         <>
             <p> 게시글 상세보기 </p>
@@ -35,12 +55,12 @@ const BoardDetail = () => {
                 content={article.content}
                 lastDate={article.lastDate}/>
 
-            <button> 삭제 </button>
+            <button onClick={deleteArticle}> 삭제 </button>
             <button> 수정 </button>
 
             <hr/>
 
-            <h1> 대충 댓글 </h1>
+            <button onClick={backToList}> 뒤로가기 </button>
         </>
     )
 }
