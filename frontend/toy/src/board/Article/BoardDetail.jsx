@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import axios from "axios"
+import axios from "axios";
 import { useNavigate, useParams } from 'react-router-dom';
-import Board from './Board'
+import Board from '../Article/Board'
+import WriteComment from '../Comment/WriteComment';
+import CommentList from '../Comment/CommentList';
 
 const BoardDetail = () => {
     const board = useParams()
@@ -9,11 +11,13 @@ const BoardDetail = () => {
     const serverUrl = "http://localhost:8080/article/" + board.articleId
     const nav = useNavigate()
 
+
     const getArticle = async()  => {
         axios.get(serverUrl
         ).then(res =>{
             if(res.status === 200){
                 setArticle(res.data)
+                console.log(article)
             }
             else{
                 alert(res.message)
@@ -26,10 +30,6 @@ const BoardDetail = () => {
     useEffect(() => {
         getArticle()
     }, [])
-
-    const backToList = () => {
-        nav('/')
-    }
 
     const deleteArticle = async() => {
         axios.delete(serverUrl
@@ -46,6 +46,14 @@ const BoardDetail = () => {
         })
     }
 
+    const updateArticle = () => {
+        nav('/update/' + article.articleId)
+    }
+
+    const backToList = () => {
+        nav('/')
+    }
+
     return(
         <>
             <p> 게시글 상세보기 </p>
@@ -55,10 +63,16 @@ const BoardDetail = () => {
                 content={article.content}
                 lastDate={article.lastDate}/>
 
-            <button onClick={deleteArticle}> 삭제 </button>
-            <button> 수정 </button>
+            <div>
+                <button onClick={deleteArticle}> 삭제 </button>
+                <button onClick={updateArticle}> 수정 </button>
+            </div>
 
             <hr/>
+
+            <WriteComment url={board.articleId}/>
+
+            <CommentList comment={article.comments}/>
 
             <button onClick={backToList}> 뒤로가기 </button>
         </>

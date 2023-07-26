@@ -5,7 +5,7 @@ import axios from "axios";
 const serverUrl = "http://localhost:8080/article"
 
 const WriteArticle = () => {
-    const navigate = useNavigate()
+    const nav = useNavigate()
 
     const [article, setArticle] = useState({
         title: '',
@@ -33,7 +33,7 @@ const WriteArticle = () => {
           if(res.status === 201){
             alert("작성 완료")
             const articleUrl = res.headers.location
-            navigate(articleUrl)
+            nav(articleUrl)
           }
           else{
               alert(res.message)
