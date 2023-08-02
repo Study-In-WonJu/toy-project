@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router";
 
-const WriteComment = (props) => {
+const WriteComment = () => {
+    const board = useParams()
     const [comment, setComment] = useState([])
-    const serverUrl = "http://localhost:8080/article/" + props.url
+    const serverUrl = "http://localhost:8080/article/" + board.articleId
     let nav = useNavigate()
 
     const config =  {

@@ -3,19 +3,18 @@ import { useNavigate, useParams } from "react-router";
 import axios from "axios";
 
 
-const UpdateArticle = () => {
+const UpdateComment = () => {
     const nav = useNavigate()
     const board = useParams()
-    const [article, setArticle] = useState({
-        articleId: '',
-        title: '',
+    const [comment, setComment] = useState({
+        commentId: '',
         content: '',
         lastDate: ''
     })
 
     const serverUrl = "http://localhost:8080/article/" + board.articleId
 
-    const {title, content} = article
+    const {commentId, content} = comment
 
     const config =  {
         headers: {
@@ -25,17 +24,17 @@ const UpdateArticle = () => {
     
     const onChange = (event) => {
         const { value, name } = event.target
-        setArticle({
-            ...article,
+        setComment({
+            ...comment,
             [name]: value
         })
     }
 
-    const getArticle = () => {
+    const getComment = () => {
         axios.get(serverUrl
         ).then(res =>{
             if(res.status === 200){
-                setArticle(res.data)
+                setComment(res.data)
             }
             else{
                 alert(res.message)
@@ -45,13 +44,11 @@ const UpdateArticle = () => {
         })
     }
 
-    const updateArticle = ()  => {
-        axios.put(serverUrl, JSON.stringify(article), config
+    const updateComment = ()  => {
+        axios.put(serverUrl, JSON.stringify(comment), config
         ).then(res =>{
             if(res.status !== 404){
                 alert("수정되었습니다")
-                console.log(article.title)
-                nav(-1)
             }
         }).catch((err) => {
             alert(err.message)
@@ -60,20 +57,20 @@ const UpdateArticle = () => {
   
     const handleSubmit = (event) => {
         event.preventDefault()
-        updateArticle()
+        updateComment()
       }
 
     useEffect(() => {
-        getArticle()
+        getComment()
     }, [])
     
     return(
         <form onSubmit={handleSubmit}>
-            <p><input type="text" name="title" value={title} onChange={onChange}/></p>
+            <p>{commentId}</p>
             <p><textarea name="content" value={content} onChange={onChange}/></p>
             <input type="submit" value="수정"/>
         </form>
     )
 }
 
-export default UpdateArticle;
+export default UpdateComment
