@@ -1,23 +1,29 @@
-/* Home.css
-    Home의 css.
-    여백과 버튼을 꾸밈.
-*/
-
 body{
     padding: 2%;
+    text-decoration: none;
 }
 
 button{
     background-color: white;
-    margin: 1%;
+    margin: 0.5%;
 }
 
-li{
-    margin-bottom: 5px;
-    border-bottom: 1px solid gray;
-    list-style: none;
+table{
+    margin: auto;
+    align-items: center;
+    height: 90px;
+    width: 90%;
+    border: 1px grey solid;
 }
 
-ul{
-    border: 1px gray;
+td{
+    font-size: medium;
+}
+
+.title{
+    width: 70%
+}
+
+.id{
+    width: 20%;
 }

@@ -1,15 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import "./BoardList.css"
 
 const serverUrl = "http://localhost:8080/article"
-/* BoardForm.js
-    게시판의 주 형태.
-*/
 
-
-function BoardList(){
+const BoardList = () =>{
     const [boardList, setBoardList] = useState([])
 
     const getBoardList = async()  => {
@@ -35,14 +30,22 @@ function BoardList(){
             <p> 게시판 목록 </p>
 
             <table>
-                <thead/>
+                <thead>
+                    <tr>
+                        <th className = "title"> Title </th>
+                        <th className = "id" > Id </th>
+                    </tr>
+                </thead>
 
                 <tbody>
                     {boardList && boardList.map((board) => (
-                        <tr key={board.articleId}>
-                            <Link to = {'/article/' + board.articleId}>
-                                {board.title}
-                            </Link>
+                        <tr>
+                            <td key={board.articleId} className = "title">
+                                <Link to = {'/article/' + board.articleId}>
+                                    {board.title}
+                                </Link>
+                            </td>
+                            <td className="id"> {board.articleId} </td>
                         </tr>
                     ))}
                 </tbody>

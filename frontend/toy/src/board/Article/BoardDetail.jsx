@@ -4,20 +4,22 @@ import { useNavigate, useParams } from 'react-router-dom';
 import Board from '../Article/Board'
 import WriteComment from '../Comment/WriteComment';
 import CommentList from '../Comment/CommentList';
+import DeleteComment from '../Comment/DeleteComment';
 
 const BoardDetail = () => {
     const board = useParams()
-    const [article, setArticle] = useState([])
-    const serverUrl = "http://localhost:8080/article/" + board.articleId
     const nav = useNavigate()
-
+    const [article, setArticle] = useState([])
+    const [commentList, setCommentList] = useState([])
+    const serverUrl = "http://localhost:8080/article/" + board.articleId
 
     const getArticle = async()  => {
         axios.get(serverUrl
         ).then(res =>{
             if(res.status === 200){
                 setArticle(res.data)
-                console.log(article)
+                setCommentList(res.data.comments)
+                console.log(typeof commentList)
             }
             else{
                 alert(res.message)
@@ -34,7 +36,7 @@ const BoardDetail = () => {
     const deleteArticle = async() => {
         axios.delete(serverUrl
         ).then((res) => {
-            if(res.status == 204){
+            if(res.status === 204){
                 alert("삭제되었습니다")
                 nav('/')
             }
@@ -70,9 +72,32 @@ const BoardDetail = () => {
 
             <hr/>
 
-            <WriteComment url={board.articleId}/>
+            <WriteComment/>
+            
+            <p> 댓글 목록 </p>
 
-            <CommentList comment={article.comments}/>
+            {/* <CommentList props={commentList}/> */}
+
+            <table>
+                <thead>
+                    <tr>
+                        <th> Content </th>
+                        <th> Id </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {commentList && commentList.map((c) => (
+                        <tr>
+                            <td key={c.commentId} className="content">
+                                {c.content}
+                            </td>
+                            <td className="id"> {c.commentId} </td>
+                            <td> <DeleteComment id={c.commentId}/> </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
 
             <button onClick={backToList}> 뒤로가기 </button>
         </>

@@ -3,7 +3,7 @@ import './Home.css';
 import Header from './layout/Header';
 import Footer from './layout/Footer';
 import BoardList from './board/BoardList';
-import WriteArticle from './board/WriteArticle';
+import WriteArticle from './board/Article/WriteArticle';
 
 
 /* Home.jsx
