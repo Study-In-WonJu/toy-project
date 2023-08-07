@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router";
+import React from "react";
+import { useNavigate } from "react-router";
 import axios from "axios";
 
 const DeleteComment = (props) => {

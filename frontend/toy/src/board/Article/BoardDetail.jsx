@@ -3,8 +3,9 @@ import axios from "axios";
 import { useNavigate, useParams } from 'react-router-dom';
 import Board from '../Article/Board'
 import WriteComment from '../Comment/WriteComment';
-import CommentList from '../Comment/CommentList';
 import DeleteComment from '../Comment/DeleteComment';
+import UpdateComment from '../Comment/UpdateComment';
+import '../Comment/CommentList.css'
 
 const BoardDetail = () => {
     const board = useParams()
@@ -76,8 +77,6 @@ const BoardDetail = () => {
             
             <p> 댓글 목록 </p>
 
-            {/* <CommentList props={commentList}/> */}
-
             <table>
                 <thead>
                     <tr>
@@ -92,8 +91,11 @@ const BoardDetail = () => {
                             <td key={c.commentId} className="content">
                                 {c.content}
                             </td>
-                            <td className="id"> {c.commentId} </td>
-                            <td> <DeleteComment id={c.commentId}/> </td>
+                            <td className='id'> {c.commentId} </td>
+                            <td className='comment'> <DeleteComment id={c.commentId}/> </td>
+                            <td className='comment'> 
+                                <UpdateComment id={c.commentId} content={c.content}/> 
+                            </td> 
                         </tr>
                     ))}
                 </tbody>

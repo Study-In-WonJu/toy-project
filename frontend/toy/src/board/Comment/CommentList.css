@@ -1,11 +1,13 @@
 .content{
-    width: 66%;
+    width: 60%;
 }
 
-.update{
-    width: 2%;
+.id{
+    width: 10%;
 }
 
-.delete{
-    width: 2%;
+.comment{
+    width: 10%;
+    margin: none;
+    padding: none;
 }
